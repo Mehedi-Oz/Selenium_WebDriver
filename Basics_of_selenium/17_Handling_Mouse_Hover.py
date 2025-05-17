@@ -7,12 +7,12 @@ browser = webdriver.Chrome()
 browser.maximize_window()
 browser.get("https://demo.automationtesting.in/Datepicker.html")
 
-action = ActionChains(browser)
+actions = ActionChains(browser)
 hover_element = browser.find_element(By.XPATH, "//a[normalize-space()='SwitchTo']")
-action.move_to_element(hover_element).perform()
+actions.move_to_element(hover_element).perform()
 time.sleep(1)
 
-browser.find_element(By.XPATH, "//a[normalize-space()='Windows']").click()
+browser.find_element(By.XPATH, "//a[normalize-space()='Frames']").click()
 time.sleep(1)
 
 browser.quit()
