@@ -4,7 +4,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
-csv_file = "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/authentication.csv"
+csv_file = "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/Files/authentication.csv"
 
 test_data = []
 

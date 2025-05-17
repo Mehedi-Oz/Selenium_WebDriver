@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 import json
 
-with open("C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/authentication.json") as file:
+with open("C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/Files/authentication.json") as file:
     test_data = json.load(file)
 
 browser = webdriver.Firefox()

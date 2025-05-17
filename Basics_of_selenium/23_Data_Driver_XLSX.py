@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 
 workbook = load_workbook(
-    "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/authentication.xlsx"
+    "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/Files/authentication.xlsx"
 )
 sheet = workbook.active
 
