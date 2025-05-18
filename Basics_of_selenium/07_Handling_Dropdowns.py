@@ -8,6 +8,15 @@ browser.get('https://the-internet.herokuapp.com/dropdown')
 browser.maximize_window()
 time.sleep(1)
 
+
+# dropdown = browser.find_element(By.ID, "dropdown")
+# select = Select(dropdown)
+
+# select.select_by_visible_text("Option 2")
+# select.select_by_value("1")
+# select.select_by_index(2)
+
+
 # Dropdown Counts
 
 # dropdown_element = Select(browser.find_element(By.ID, "dropdown"))

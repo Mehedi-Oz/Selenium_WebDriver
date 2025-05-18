@@ -1,46 +1,34 @@
+import pandas as pd
 from selenium import webdriver
-import csv
-import time
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.common.exceptions import NoSuchElementException as exceptions
 
-csv_file = "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/Files/authentication.csv"
 
-test_data = []
-
-with open(csv_file, "r") as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-        test_data.append(row)
-
-print(test_data)
+# df = pd.read_csv("C:/AAA - PROJECTS/SELENIUM WEBDRIVER/Files/authentication.csv")
+df = pd.read_csv(
+    "C:/GITHUB/Selenium_WebDriver/Basics_of_selenium/Files/authentication.csv"
+)
 
 browser = webdriver.Firefox()
-browser.maximize_window()
 browser.get("https://www.saucedemo.com/")
-time.sleep(1)
 
-for data in test_data:
+for _, row in df.iterrows():
     try:
-        browser.find_element(By.ID, "user-name").clear()
-        browser.find_element(By.ID, "password").clear()
-        browser.find_element(By.ID, "user-name").send_keys(data["username"])
-        browser.find_element(By.ID, "password").send_keys(data["password"])
+        username = browser.find_element(By.ID, "user-name")
+        username.clear()
+        password = browser.find_element(By.ID, "password")
+        password.clear()
+        username.send_keys(row["username"])
+        password.send_keys(row["password"])
         browser.find_element(By.ID, "login-button").click()
-        time.sleep(1)
-
-        # Check if login was successful by looking for the burger menu
-        browser.find_element(By.ID, "react-burger-menu-btn")
-        print(f"Login successful for user: {data['username']}")
 
         browser.find_element(By.ID, "react-burger-menu-btn").click()
-        time.sleep(1)
         browser.find_element(By.ID, "logout_sidebar_link").click()
-        time.sleep(1)
 
-    except NoSuchElementException:
-        print(f"Login failed for user: {data['username']}. Skipping to next user.")
+    except exceptions:
         browser.get("https://www.saucedemo.com/")
-        time.sleep(1)
+
 
 browser.quit()
